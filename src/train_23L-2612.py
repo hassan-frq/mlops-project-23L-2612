@@ -3,6 +3,8 @@ import joblib
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
+from sklearn.preprocessing import MinMaxScaler
+
 
 STUDENT_ID = "23L-2612"
 
@@ -14,6 +16,7 @@ def main():
     y = df["MedHouseVal"]
 
     X = StandardScaler().fit_transform(X)
+    X = MinMaxScaler().fit_transform(X)
 
     X_train, X_test, y_train, y_test = train_test_split(
         X, y, test_size=0.2, random_state=42
